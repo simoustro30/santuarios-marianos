@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { MenuItems } from './MenuItems'
-import './Nav.css'
+import React, { Component } from 'react';
+import { MenuItems } from './MenuItems';
+import './Nav.css';
+import { Link } from 'react-router-dom';
 class Nav extends Component {
     state = {clicked: false}
 
@@ -18,11 +19,13 @@ class Nav extends Component {
                 <ul className = {this.state.clicked ? 'nav-menu active' : 'nav-menu'}>
                     {MenuItems.map((item, index)=>{
                         return(
-                            <li key= {index}>
-                                <a className={item.cName} href={item.url}>
-                                    {item.title}
-                                </a>
-                            </li>
+                            <Link to= {item.url} style={{ textDecoration: 'none' }}>
+                                <li key= {index}>
+                                    <p className={item.cName}>
+                                        {item.title}
+                                    </p>
+                                </li>
+                            </Link>
                         )
                     })}
                 </ul>
